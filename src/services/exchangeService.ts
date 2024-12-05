@@ -14,3 +14,9 @@ export const fetchTaxaDeMoedas = async (baseCurrency: string) => {
     throw error;
   }
 };
+
+// GET https://v6.exchangerate-api.com/v6/YOUR-API-KEY/pair/EUR/GBP/AMOUNT - faz o calculo da conversão...
+// GET https://v6.exchangerate-api.com/v6/YOUR-API-KEY/enriched/GBP/JPY - Para pegar informações sobre o pais, inclusive imagem
+
+// 2 funcionalidades extras - Deixar um painel rodando na tela mostrando as converções do real
+// Criar um botão para historico de valores para poder pesquisar valores de converção do ano passado

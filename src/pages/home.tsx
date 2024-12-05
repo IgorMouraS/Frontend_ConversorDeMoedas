@@ -1,21 +1,8 @@
 import { Container, Title, Form } from '../styles/home.styles';
 
-import { Converter } from '../components/Converter';
+import { CurrencyProvider } from '../context/CurrencyContext';
 
-// Criando o Contexto de Moeda
-// const CurrencyContext = createContext<{
-//   exchangeRates: { [key: string]: number };
-//   currencies: string[];
-//   setExchangeRates: React.Dispatch<
-//     React.SetStateAction<{ [key: string]: number }>
-//   >;
-//   setCurrencies: React.Dispatch<React.SetStateAction<string[]>>;
-// }>({
-//   exchangeRates: {},
-//   currencies: [],
-//   setExchangeRates: () => {},
-//   setCurrencies: () => {},
-// });
+import { Converter } from '../components/Converter';
 
 function Home() {
   return (
@@ -23,7 +10,9 @@ function Home() {
       <Container>
         <Title>Conversor de Moedas - em tempo real</Title>
         <Form>
-          <Converter />
+          <CurrencyProvider>
+            <Converter />
+          </CurrencyProvider>
         </Form>
       </Container>
     </>

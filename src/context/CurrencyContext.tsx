@@ -1,71 +1,85 @@
-// src/contexts/CurrencyContext.tsx
-import React, { createContext, useState, useEffect, ReactNode } from 'react';
-import axios from 'axios';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { fetchTaxaDeMoedas } from '../services/exchangeService';
 
-type CurrencyContextType = {
-  rates: Record<string, number>;
-  baseCurrency: string;
-  setBaseCurrency: (currency: string) => void;
-  fetchRates: () => void;
-};
+interface CurrencyContextType {
+  currencies: string[];
+  exchangeRates: { [key: string]: number };
+  updateRates: () => void;
+}
 
-const CurrencyContext = createContext<CurrencyContextType | undefined>(
-  undefined,
-);
+const CurrencyContext = createContext<CurrencyContextType | null>(null);
 
-const CurrencyProvider = ({ children }: { children: ReactNode }) => {
-  const [rates, setRates] = useState<Record<string, number>>({});
-  const [baseCurrency, setBaseCurrency] = useState<string>('USD');
+interface CurrencyProviderProps {
+  children: React.ReactNode;
+}
 
-  // Função para buscar as taxas de câmbio da API
-  const fetchRates = async () => {
-    try {
-      const response = await axios.get(
-        `https://api.exchangerate-api.com/v4/latest/${baseCurrency}`,
-      );
-      setRates(response.data.rates);
+export const CurrencyProvider: React.FC<CurrencyProviderProps> = ({
+  children,
+}) => {
+  const [currencies, setCurrencies] = useState<string[]>([]);
+  const [exchangeRates, setExchangeRates] = useState<{ [key: string]: number }>(
+    {},
+  );
+
+  const updateRates = async () => {
+    const storedData = localStorage.getItem('moedasTypes');
+    let data;
+    if (!storedData) {
+      data = await fetchTaxaDeMoedas('BRL');
       localStorage.setItem(
-        'currencyRates',
-        JSON.stringify(response.data.rates),
-      ); // Cache as taxas de câmbio no localStorage
-    } catch (error) {
-      console.error('Erro ao buscar as taxas de câmbio', error);
+        'moedasTypes',
+        JSON.stringify(data.conversion_rates),
+      );
+    } else {
+      data = { conversion_rates: JSON.parse(storedData) };
+    }
+    const moedasList = Object.keys(data.conversion_rates);
+    setCurrencies(moedasList);
+    setExchangeRates(data.conversion_rates);
+  };
+
+  // Função que compara as taxas atuais com as armazenadas no localStorage
+  const checkForUpdates = async () => {
+    const storedData = localStorage.getItem('moedasTypes');
+    const newData = await fetchTaxaDeMoedas('BRL');
+
+    if (storedData) {
+      const storedRates = JSON.parse(storedData);
+      const newRates = newData.conversion_rates;
+
+      // Comparar taxas e atualizar somente se necessário
+      if (JSON.stringify(storedRates) !== JSON.stringify(newRates)) {
+        updateRates(); // Se as taxas forem diferentes, atualize o estado e o localStorage
+      }
+    } else {
+      updateRates(); // Se não houver taxas armazenadas, faça uma atualização inicial
     }
   };
 
   useEffect(() => {
-    const cachedRates = localStorage.getItem('currencyRates');
-    if (cachedRates) {
-      setRates(JSON.parse(cachedRates));
-    } else {
-      fetchRates();
-    }
-  }, [baseCurrency]);
+    checkForUpdates();
+    // ATIVAR Somente em produção
+    // const interval = setInterval(() => {
+    //   checkForUpdates(); // Verificar e atualizar a cada 10 segundos
+    // }, 10000); // 10 segundos
 
-  // Atualizar taxas a cada 10 segundos
-  useEffect(() => {
-    const interval = setInterval(() => {
-      fetchRates();
-    }, 10000);
-    return () => clearInterval(interval);
-  }, [baseCurrency]);
+    // return () => clearInterval(interval); // Limpar intervalo ao desmontar o componente
+  }, []);
 
   return (
     <CurrencyContext.Provider
-      value={{ rates, baseCurrency, setBaseCurrency, fetchRates }}
+      value={{ currencies, exchangeRates, updateRates }}
     >
       {children}
     </CurrencyContext.Provider>
   );
 };
 
-// Custom Hook para facilitar o acesso ao contexto
-const useCurrency = () => {
-  const context = React.useContext(CurrencyContext);
+// Hook para acessar o contexto
+export const useCurrency = (): CurrencyContextType => {
+  const context = useContext(CurrencyContext);
   if (!context) {
     throw new Error('useCurrency must be used within a CurrencyProvider');
   }
   return context;
 };
-
-export { CurrencyProvider, useCurrency };
