@@ -2,6 +2,11 @@
 
 Um conversor de moedas construído com **React** e **Vite**, utilizando a API [exchangerate-api.com](https://www.exchangerate-api.com/) para obter taxas de câmbio atualizadas em tempo real. A aplicação permite ao usuário converter valores entre diferentes moedas com otimização de desempenho, incluindo **Lazy Loading** para melhorar o carregamento 🚀.
 
+## Deploy 🚀
+
+A aplicação está disponível no seguinte link:  
+🔗 [Conversor de Moedas - Netlify](https://conversor-de-moeda-igormsousa2003.netlify.app/)
+
 ## Funcionalidades 📋
 
 1. **Conversão de Moedas**: O usuário pode selecionar uma moeda de origem, uma moeda de destino, inserir um valor para converter e clicar no botão "Converter" para visualizar o cálculo da conversão.
@@ -30,11 +35,6 @@ Um conversor de moedas construído com **React** e **Vite**, utilizando a API [e
   - A aplicação foi otimizada para produção.
   - **Lazy Loading**: Utilizamos lazy loading para módulos não essenciais, melhorando o desempenho de carregamento.
 - **Estilo e Interatividade**: A aplicação foi estilizada utilizando **styled-components**.
-
-## Deploy 🚀
-
-A aplicação está disponível no seguinte link:  
-🔗 [Conversor de Moedas - Netlify](https://conversor-de-moeda-igormsousa2003.netlify.app/)
 
 ## Estrutura do Projeto 📂
 
