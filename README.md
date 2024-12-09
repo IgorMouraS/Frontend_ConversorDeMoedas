@@ -1,50 +1,58 @@
-# React + TypeScript + Vite
+# 💱 Conversor de Moedas 💱
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um conversor de moedas construído com **React** e **Vite**, utilizando a API [exchangerate-api.com](https://www.exchangerate-api.com/) para obter taxas de câmbio atualizadas em tempo real. A aplicação permite ao usuário converter valores entre diferentes moedas com otimização de desempenho, incluindo **Lazy Loading** para melhorar o carregamento 🚀.
 
-Currently, two official plugins are available:
+## Funcionalidades 📋
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Conversão de Moedas**: O usuário pode selecionar uma moeda de origem, uma moeda de destino, inserir um valor para converter e clicar no botão "Converter" para visualizar o cálculo da conversão.
+2. **Atualização em Tempo Real**: As taxas de câmbio são atualizadas diariamente para garantir que os valores sejam precisos.
+3. **Histórico de Conversão**: O usuário pode visualizar as últimas cinco conversões realizadas durante a sessão ao clicar no botão de histórico.
+4. **Modo Noturno**: O usuário pode alterar o tema da página para escuro clicando no ícone de Lua 🌙.
 
-## Expanding the ESLint configuration
+## Imagens do Projeto 📸
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+![Light-Desktop](./src/assets/ConversorDeMoedas-Light-Desktop.jpg)  
+_Light-Desktop_
 
-- Configure the top-level `parserOptions` property like this:
+![Light-Desktop](./src/assets/ConversorDeMoedas-Light-Mobile.jpeg)  
+_Light-Mobile_
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+![Light-Desktop](./src/assets/ConversorDeMoedas-Dark-Desktop.jpg)  
+_Dark-Desktop_
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+![Light-Desktop](./src/assets/ConversorDeMoedas-Dark-Mobile.jpeg)  
+_Dark-Mobile_
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Informações Técnicas ⚙️
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- **React & Vite**: A aplicação foi construída com React, utilizando o Vite para otimizar o processo de build.
+- **API de Taxas de Câmbio**: Utilizamos a API pública da [exchangerate-api.com](https://www.exchangerate-api.com/) para obter taxas de câmbio atualizadas em tempo real.
+- **Armazenamento em Cache**: Implementamos um mecanismo para armazenar as taxas de câmbio localmente usando `localStorage`, atualizando-as diariamente.
+- **Desempenho e Tamanho de Build**:
+  - A aplicação foi otimizada para produção.
+  - **Lazy Loading**: Utilizamos lazy loading para módulos não essenciais, melhorando o desempenho de carregamento.
+- **Estilo e Interatividade**: A aplicação foi estilizada utilizando **styled-components**.
+
+## Deploy 🚀
+
+A aplicação está disponível no seguinte link:  
+🔗 [Conversor de Moedas - Netlify](https://conversor-de-moeda-igormsousa2003.netlify.app/)
+
+## Estrutura do Projeto 📂
+
+- **src/components**: Contém os componentes principais da aplicação (ex: formulários, botões, histórico).
+- **src/context**: Contém o contexto global para o gerenciamento do estado e atualizações.
+- **src/services**: Contém os serviços para integração com a API de taxas de câmbio.
+- **src/styles**: Contém os arquivos de estilo, utilizando `styled-components`.
+
+## Tecnologias Utilizadas 🛠️
+
+- **React**: Biblioteca JavaScript para construção da interface de usuário.
+- **Vite**: Ferramenta de bundling e build extremamente rápida para desenvolvimento.
+- **Axios**: Cliente HTTP para fazer requisições à API de taxas de câmbio.
+- **styled-components**: Para estilização dos componentes da aplicação.
+- **exchangerate-api.com**: API de taxas de câmbio para obter as informações em tempo real.
+
+---
+
+Projeto desenvolvido por [Igor Moura](https://github.com/seu-usuario).

@@ -1,16 +1,12 @@
 import styled from 'styled-components';
 
-const breakpoints = {
-  mobile: '510px',
-  tablet: '790px',
-  desktop: '1024px',
-};
+import breakpoints from './breakpoints.style';
 
 export const Container = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: row;
   gap: 3rem;
-  align-items: center;
   justify-content: center;
   padding: 0 2rem;
 
@@ -21,7 +17,7 @@ export const Container = styled.div`
     padding: 0 1rem;
   }
 
-  @media (min-width: ${breakpoints.mobile}) and max-width: ${breakpoints.tablet}) {
+  @media (min-width: ${breakpoints.mobile}) and (max-width: ${breakpoints.tablet}) {
     gap: 1rem;
     padding: 0 1rem;
   }
@@ -33,32 +29,32 @@ export const Container = styled.div`
 `;
 
 export const CampoDeConversao = styled.div<{ $erro: boolean }>`
-  display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  box-shadow:
-    4px 4px 10px rgba(0, 0, 0, 0.15),
-    inset -2px 1px 4px rgba(0, 0, 0, 0.2);
   background-color: ${(props) => (props.$erro ? '#ffc2c2' : '#e4e4e4')};
   border: none;
   border-radius: 25px;
+  box-shadow:
+    4px 4px 10px rgba(0, 0, 0, 0.15),
+    inset -2px 1px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 
   &.dark {
+    background-color: ${(props) => (props.$erro ? '#ffc2c2' : '#9d9d9d')};
     box-shadow:
       4px 4px 10px rgba(0, 0, 0, 0.5),
       inset -2px 1px 4px rgba(0, 0, 0, 0.8);
-    background-color: ${(props) => (props.$erro ? '#ffc2c2' : '#9d9d9d')};
   }
 `;
 
 export const Select = styled.select`
-  box-shadow: inset -1px 1px 2px rgba(0, 0, 0, 0.3);
   background-color: #dddddd;
-  padding: 1rem 1rem;
-  font-size: 1.2rem;
   border: none;
   border-radius: 50px 25px 25px 50px;
+  box-shadow: inset -1px 1px 2px rgba(0, 0, 0, 0.3);
+  font-size: 1.2rem;
+  padding: 1rem 1rem;
   text-align: center;
 
   &:focus {
@@ -66,9 +62,9 @@ export const Select = styled.select`
   }
 
   &:hover {
+    background-color: #70ff70;
     box-shadow: inset -1px 1px 2px rgba(0, 58, 0, 0.5);
     cursor: pointer;
-    background-color: #70ff70;
   }
 
   &:active {
@@ -76,12 +72,12 @@ export const Select = styled.select`
   }
 
   &.dark {
-    box-shadow: inset -1px 1px 2px rgba(0, 0, 0, 0.8);
     background-color: #c0c0c0;
+    box-shadow: inset -1px 1px 2px rgba(0, 0, 0, 0.8);
 
     &:hover {
-      box-shadow: inset -1px 1px 2px rgba(0, 58, 0, 0.8);
       background-color: #50ff50;
+      box-shadow: inset -1px 1px 2px rgba(0, 58, 0, 0.8);
     }
 
     &:active {
@@ -91,25 +87,25 @@ export const Select = styled.select`
 
   /* Responsividade */
   @media (max-width: ${breakpoints.mobile}) {
-    padding: 1.3rem .5rem;
     font-size: 1.4rem;
+    padding: 1.3rem 0.5rem;
   }
 
-  @media (min-width: ${breakpoints.mobile}) and max-width: ${breakpoints.tablet}) {
-    padding: 0.8rem 0.2rem;
+  @media (min-width: ${breakpoints.mobile}) and (max-width: ${breakpoints.tablet}) {
     font-size: 0.8rem;
+    padding: 0.8rem 0.2rem;
   }
 
   @media (min-width: ${breakpoints.desktop}) {
-    padding: 1.5rem 2rem;
     font-size: 1.2rem;
+    padding: 1.5rem 2rem;
   }
 `;
 
 export const Option = styled.option`
+  color: #1e1e1e;
   font-size: 1.2rem;
   text-align: center;
-  color: #1e1e1e;
 
   &.dark {
     color: #d5d5d5;
@@ -120,18 +116,19 @@ export const Option = styled.option`
     font-size: 1.4rem;
   }
 
-  @media (min-width: ${breakpoints.tablet}) {
+  @media (min-width: ${breakpoints.mobile}) and (max-width: ${breakpoints.tablet}) {
     font-size: 0.8rem;
   }
 
   @media (min-width: ${breakpoints.desktop}) {
+    font-size: 1.2rem;
   }
 `;
 
 export const Button = styled.button`
-  color: #008800;
   background: none;
   border: none;
+  color: #008800;
   cursor: pointer;
   padding: 0;
   transition: transform 0.3s ease;
@@ -172,8 +169,8 @@ export const Button = styled.button`
 export const Text = styled.p`
   font-size: 1rem;
   font-weight: bold;
-  text-align: center;
   margin-bottom: 0.5rem;
+  text-align: center;
 
   /* Responsividade */
   @media (max-width: ${breakpoints.mobile}) {
@@ -181,12 +178,9 @@ export const Text = styled.p`
     margin-bottom: 0.4rem;
   }
 
-  @media (min-width: ${breakpoints.mobile}) and max-width: ${breakpoints.tablet}) {
+  @media (min-width: ${breakpoints.mobile}) and (max-width: ${breakpoints.tablet}) {
     font-size: 0.8rem;
     margin-bottom: 0.4rem;
-  }
-
-  @media (min-width: ${breakpoints.desktop}) {
   }
 `;
 
@@ -194,14 +188,8 @@ export const IconConverter = styled.i`
   font-size: 1.6rem;
 
   /* Responsividade */
-  @media (max-width: ${breakpoints.mobile}) {
-  }
-
-  @media (min-width: ${breakpoints.mobile}) and max-width: ${breakpoints.tablet}) {
+  @media (min-width: ${breakpoints.mobile}) and (max-width: ${breakpoints.tablet}) {
     font-size: 1.2rem;
-  }
-
-  @media (min-width: ${breakpoints.desktop}) {
   }
 `;
 
@@ -211,10 +199,10 @@ export const ErroContainer = styled.div`
 `;
 
 export const ErroTexto = styled.p`
-  font-size: 0.9rem;
   color: #c20000;
-  margin-top: 0.5rem;
+  font-size: 0.9rem;
   margin-left: 1.6rem;
+  margin-top: 0.5rem;
 
   &.dark {
     color: #ff4343;

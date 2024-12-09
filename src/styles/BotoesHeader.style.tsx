@@ -1,15 +1,11 @@
 import styled from 'styled-components';
 
-const breakpoints = {
-  mobile: '510px',
-  tablet: '790px',
-  desktop: '1024px',
-};
+import breakpoints from './breakpoints.style';
 
 export const Container = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
   min-width: 750px;
 
@@ -18,7 +14,7 @@ export const Container = styled.div`
     min-width: 300px;
   }
 
-  @media (min-width: ${breakpoints.mobile}) and max-width: ${breakpoints.tablet}) {
+  @media (min-width: ${breakpoints.mobile}) and (max-width: ${breakpoints.tablet}) {
     min-width: 480px;
   }
 
@@ -66,10 +62,10 @@ export const Button = styled.button`
 `;
 
 export const IconTheme = styled.i`
-  display: flex;
-  justify-content: flex-end;
-  font-size: 2.4rem;
   color: #1e1e1e;
+  display: flex;
+  font-size: 2.4rem;
+  justify-content: flex-end;
 
   &.dark {
     color: #d5d5d5;
@@ -80,7 +76,7 @@ export const IconTheme = styled.i`
     font-size: 2rem;
   }
 
-  @media (min-width: ${breakpoints.mobile}) and max-width: ${breakpoints.tablet}) {
+  @media (min-width: ${breakpoints.mobile}) and (max-width: ${breakpoints.tablet}) {
     font-size: 2rem;
   }
 

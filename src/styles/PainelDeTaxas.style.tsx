@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  overflow: hidden;
   padding: 1rem 0;
   width: 100wh;
-  overflow: hidden;
 `;
 
 export const PainelDeMoedas = styled.div`
-  display: flex;
-  gap: 20px;
+  animation: scrollAuto 200s linear infinite;
   border: none;
   border-radius: 10px;
-  animation: scrollAuto 200s linear infinite;
+  display: flex;
+  gap: 20px;
 
   &::after {
     content: '';
@@ -31,27 +31,29 @@ export const PainelDeMoedas = styled.div`
 `;
 
 export const Moeda = styled.div`
-  display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
   background-color: transparent;
   border: none;
-  text-align: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
   min-width: 120px;
+  text-align: center;
 `;
 
 export const Titulo = styled.h4`
-  margin: 0;
   color: #1e1e1e;
+  margin: 0;
+
   &.dark {
     color: #d5d5d5;
   }
 `;
 
 export const Taxa = styled.p`
-  margin: 5px 0;
   color: #1e1e1e;
+  margin: 5px 0;
+
   &.dark {
     color: #d5d5d5;
   }

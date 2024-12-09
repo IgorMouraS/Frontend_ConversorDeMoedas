@@ -1,17 +1,13 @@
 import styled from 'styled-components';
 
-const breakpoints = {
-  mobile: '510px',
-  tablet: '790px',
-  desktop: '1024px',
-};
+import breakpoints from './breakpoints.style';
 
 export const Input = styled.input`
   background-color: transparent;
-  padding: 1rem 1.5rem;
-  font-size: 1rem;
-  text-align: center;
   border: none;
+  font-size: 1rem;
+  padding: 1rem 1.5rem;
+  text-align: center;
   width: 150px;
   &[type='number']::-webkit-inner-spin-button,
   &[type='number']::-webkit-outer-spin-button {
@@ -19,8 +15,8 @@ export const Input = styled.input`
   }
 
   &:focus {
-    outline: none;
     border: none;
+    outline: none;
   }
 
   /* Responsividade */
@@ -28,9 +24,9 @@ export const Input = styled.input`
     padding: 0.8rem 0.8rem;
   }
 
-  @media (min-width: ${breakpoints.mobile}) and max-width: ${breakpoints.tablet}) {
-    padding: 0.8rem 0.8rem;
+  @media (min-width: ${breakpoints.mobile}) and (max-width: ${breakpoints.tablet}) {
     font-size: 0.8rem;
+    padding: 0.8rem 0.8rem;
     width: 120px;
   }
 

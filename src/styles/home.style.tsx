@@ -1,18 +1,13 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
-const breakpoints = {
-  mobile: '510px',
-  tablet: '790px',
-  desktop: '1024px',
-};
+import breakpoints from './breakpoints.style';
 
 export const GlobalStyle = createGlobalStyle<{ isDark: boolean }>`
 *{
   background-color: ${({ isDark }) => (isDark ? '#1e1e1e' : '#f5f5f5')};
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  
 }
 `;
 
@@ -21,11 +16,11 @@ export const PainelDeTaxasContainer = styled.section`
 `;
 
 export const HomeContainer = styled.section`
-  width: 100%;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  width: 100%;
 `;
 
 export const Container = styled.section`
@@ -36,7 +31,7 @@ export const Container = styled.section`
     max-width: 350px;
   }
 
-  @media (min-width: ${breakpoints.mobile}) and max-width: ${breakpoints.tablet}) {
+  @media (min-width: ${breakpoints.mobile}) and (max-width: ${breakpoints.tablet}) {
     max-width: 500px;
   }
 
@@ -46,19 +41,19 @@ export const Container = styled.section`
 `;
 
 export const TituloEFuncionalidades = styled.section`
-  padding: 4rem 1rem;
-  font-family: Arial, sans-serif;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  font-family: Arial, sans-serif;
+  padding: 4rem 1rem;
 
   /* Responsividade */
   @media (max-width: ${breakpoints.mobile}) {
-    padding: 2rem 0.5rem;
     gap: 2rem;
+    padding: 2rem 0.5rem;
   }
 
-  @media (min-width: ${breakpoints.mobile}) and max-width: ${breakpoints.tablet}) {
+  @media (min-width: ${breakpoints.mobile}) and (max-width: ${breakpoints.tablet}) {
     padding: 5rem 1rem;
   }
 
@@ -68,8 +63,8 @@ export const TituloEFuncionalidades = styled.section`
 `;
 
 export const Title = styled.h1`
-  font-size: 2.5rem;
   color: #1e1e1e;
+  font-size: 2.5rem;
   text-align: center;
 
   &.dark {
@@ -80,7 +75,7 @@ export const Title = styled.h1`
     font-size: 1.8rem;
   }
 
-  @media (min-width: ${breakpoints.mobile}) and max-width: ${breakpoints.tablet}) {
+  @media (min-width: ${breakpoints.mobile}) and (max-width: ${breakpoints.tablet}) {
     font-size: 2rem;
   }
 
@@ -90,15 +85,15 @@ export const Title = styled.h1`
 `;
 
 export const BodyContainer = styled.div`
-  padding: 3rem 0;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-family: Arial, sans-serif;
+  justify-content: center;
   overflow: hidden;
+  padding: 3rem 0;
 
-  @media (min-width: ${breakpoints.mobile}) and max-width: ${breakpoints.tablet}) {
+  @media (min-width: ${breakpoints.mobile}) and (max-width: ${breakpoints.tablet}) {
     padding: 2rem 0;
   }
 
@@ -108,10 +103,10 @@ export const BodyContainer = styled.div`
 `;
 
 export const FooterContainer = styled.footer`
-  position: fixed;
-  bottom: 0;
-  width: 100%;
   background-color: #d6d6d6;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
 
   &.dark {
     background-color: #121212;
