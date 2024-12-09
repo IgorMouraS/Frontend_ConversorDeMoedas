@@ -1,11 +1,17 @@
 import './App.css';
 
+import { ProvedorTema } from './context/TemaContext';
+
 import Home from './pages/home';
 
 function App() {
   return (
     <>
-      <Home />
+      <ProvedorTema>
+        <div className="home">
+          <Home />
+        </div>
+      </ProvedorTema>
     </>
   );
 }
