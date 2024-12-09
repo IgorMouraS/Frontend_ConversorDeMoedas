@@ -53,4 +53,4 @@ A aplicação está disponível no seguinte link:
 
 ---
 
-Projeto desenvolvido por [Igor Moura](https://github.com/seu-usuario).
+Projeto desenvolvido por [Igor Moura](https://github.com/IgorMouraS).
