@@ -61,7 +61,7 @@ export const Button = styled.button`
   }
 `;
 
-export const IconTheme = styled.i`
+export const ThemeIcon = styled.i`
   color: #1e1e1e;
   display: flex;
   font-size: 2.4rem;

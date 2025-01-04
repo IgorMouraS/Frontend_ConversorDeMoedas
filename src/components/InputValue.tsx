@@ -1,19 +1,19 @@
-// Bibliotecas externas
+// External libraries
 import React /*{ useEffect, useState }*/ from 'react';
 
-// Arquivos de estilo
-import { Input } from '../styles/ValorDeEntrada.style';
+// Style files
+import { Input } from '../styles/InputValue.style';
 
 interface InputProps {
-  valor: number;
+  value: number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const ValorDeEntrada: React.FC<InputProps> = ({ valor, onChange }) => {
+export const InputValue: React.FC<InputProps> = ({ value, onChange }) => {
   return (
     <Input
       type="number"
-      value={valor === 0 ? '' : valor}
+      value={value === 0 ? '' : value}
       onChange={onChange}
       placeholder="Digite o valor"
     />

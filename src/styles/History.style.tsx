@@ -49,7 +49,7 @@ export const Button = styled.button`
   }
 `;
 
-export const Lista = styled.div`
+export const List = styled.div`
   border: 1px solid #d5d5d5;
   border-radius: 25px;
   left: 180%;
@@ -72,7 +72,7 @@ export const Lista = styled.div`
   }
 `;
 
-export const Linha = styled.p`
+export const Line = styled.p`
   align-items: center;
   background-color: #ececec;
   border: 1px solid #d5d5d5;
@@ -104,7 +104,7 @@ export const Linha = styled.p`
   }
 `;
 
-export const IconHistorico = styled.i`
+export const HistoryIcon = styled.i`
   color: #1e1e1e;
   font-size: 2rem;
   margin-bottom: 1.5rem;
@@ -126,7 +126,7 @@ export const IconHistorico = styled.i`
   }
 `;
 
-export const IconConversao = styled.i`
+export const ConversionIcon = styled.i`
   background-color: transparent;
   color: #1e1e1e;
   font-size: 1rem;

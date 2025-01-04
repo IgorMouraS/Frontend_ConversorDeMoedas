@@ -2,16 +2,16 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import breakpoints from './breakpoints.style';
 
-export const GlobalStyle = createGlobalStyle<{ isDark: boolean }>`
+export const GlobalStyle = createGlobalStyle<{ homeTheme: boolean }>`
 *{
-  background-color: ${({ isDark }) => (isDark ? '#1e1e1e' : '#f5f5f5')};
+  background-color: ${({ homeTheme }) => (homeTheme ? '#1e1e1e' : '#f5f5f5')};
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 `;
 
-export const PainelDeTaxasContainer = styled.section`
+export const RatesPanelContainer = styled.section`
   width: 100vw;
 `;
 
@@ -40,7 +40,7 @@ export const Container = styled.section`
   }
 `;
 
-export const TituloEFuncionalidades = styled.section`
+export const TitleAndFeatures = styled.section`
   align-items: center;
   display: flex;
   flex-direction: column;

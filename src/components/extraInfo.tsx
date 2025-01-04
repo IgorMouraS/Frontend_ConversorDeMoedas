@@ -1,20 +1,20 @@
-// Bibliotecas externas
+// External libraries
 import React from 'react';
 
-// Arquivos de estilo
-import { Container, Texto } from '../styles/ExtraInfo.style';
+// Style files
+import { Container, Text } from '../styles/ExtraInfo.style';
 
-// Contexto
-import { useMoeda } from '../context/moedaContext';
+// Context
+import { useCurrency } from '../context/CurrencyContext';
 
 export const ExtraInfo: React.FC = () => {
-  const { ultimaAtualizacao, ultimaVerificacao } = useMoeda();
+  const { lastUpdate, lastCheck } = useCurrency();
   return (
     <>
       <hr />
       <Container>
-        <Texto>Última Busca de Taxas: {ultimaVerificacao || '-'}</Texto>
-        <Texto>Última Atualização de Taxas: {ultimaAtualizacao || '-'}</Texto>
+        <Text>Última Busca de Taxas: {lastCheck || '-'}</Text>
+        <Text>Última Atualização de Taxas: {lastUpdate || '-'}</Text>
       </Container>
     </>
   );

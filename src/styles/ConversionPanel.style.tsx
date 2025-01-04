@@ -28,9 +28,9 @@ export const Container = styled.div`
   }
 `;
 
-export const CampoDeConversao = styled.div<{ $erro: boolean }>`
+export const ConversionField = styled.div<{ $error: boolean }>`
   align-items: center;
-  background-color: ${(props) => (props.$erro ? '#ffc2c2' : '#e4e4e4')};
+  background-color: ${(props) => (props.$error ? '#ffc2c2' : '#e4e4e4')};
   border: none;
   border-radius: 25px;
   box-shadow:
@@ -41,7 +41,7 @@ export const CampoDeConversao = styled.div<{ $erro: boolean }>`
   justify-content: center;
 
   &.dark {
-    background-color: ${(props) => (props.$erro ? '#ffc2c2' : '#9d9d9d')};
+    background-color: ${(props) => (props.$error ? '#ffc2c2' : '#9d9d9d')};
     box-shadow:
       4px 4px 10px rgba(0, 0, 0, 0.5),
       inset -2px 1px 4px rgba(0, 0, 0, 0.8);
@@ -184,7 +184,7 @@ export const Text = styled.p`
   }
 `;
 
-export const IconConverter = styled.i`
+export const Icon = styled.i`
   font-size: 1.6rem;
 
   /* Responsividade */
@@ -193,12 +193,12 @@ export const IconConverter = styled.i`
   }
 `;
 
-export const ErroContainer = styled.div`
+export const ErrorContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-export const ErroTexto = styled.p`
+export const ErrorText = styled.p`
   color: #c20000;
   font-size: 0.9rem;
   margin-left: 1.6rem;

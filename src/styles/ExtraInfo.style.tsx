@@ -11,7 +11,7 @@ export const Container = styled.div`
   padding: 1rem;
 `;
 
-export const Texto = styled.p`
+export const Text = styled.p`
   background-color: transparent;
   font-family: Arial, sans-serif;
   font-size: 0.7rem;

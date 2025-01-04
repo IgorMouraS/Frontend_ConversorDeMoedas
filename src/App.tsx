@@ -1,17 +1,20 @@
+// Style files
 import './App.css';
 
-import { ProvedorTema } from './context/TemaContext';
+// Context
+import { ThemeProvider } from './context/ThemeContext';
 
+// Components
 import Home from './pages/home';
 
 function App() {
   return (
     <>
-      <ProvedorTema>
+      <ThemeProvider>
         <div className="home">
           <Home />
         </div>
-      </ProvedorTema>
+      </ThemeProvider>
     </>
   );
 }

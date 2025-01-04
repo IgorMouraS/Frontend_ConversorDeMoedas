@@ -1,79 +1,79 @@
-// Bibliotecas externas
+// External libraries
 import React, { useState } from 'react';
 
 // Contexto
-import { useMoeda } from '../context/moedaContext';
-import { useHistorico } from '../context/historicoContext';
+import { useCurrency } from '../context/CurrencyContext';
+import { useHistory } from '../context/HistoryContext';
 
-// Arquivos de estilo
+// Style files
 import { Container } from '../styles/conversor.style';
 
-// Componentes
-import { PainelDeConversao } from './PainelDeConversao';
+// Components
+import { ConversionPanel } from './ConversionPanel';
 
-export const Conversor: React.FC = () => {
-  const { moedas, taxaDeCambio } = useMoeda();
-  const { setHistorico } = useHistorico();
-  const [moedaOrigem, setMoedaOrigem] = useState<string>('BRL');
-  const [moedaDestino, setMoedaDestino] = useState<string>('USD');
-  const [valor, setValor] = useState<number>(0);
-  const [resultado, setResultado] = useState<number>(0);
-  const [erro, setErro] = useState<boolean>(false);
+export const Converter: React.FC = () => {
+  const { currencies, exchangeRates } = useCurrency();
+  const { setHistory } = useHistory();
+  const [fromCurrency, setFromCurrency] = useState<string>('BRL');
+  const [toCurrency, setToCurrency] = useState<string>('USD');
+  const [amount, setAmount] = useState<number>(0);
+  const [result, setResult] = useState<number>(0);
+  const [error, setError] = useState<boolean>(false);
 
-  const converter = () => {
-    if (valor <= 0 || isNaN(valor)) {
-      setErro(true);
+  const convert = () => {
+    if (amount <= 0 || isNaN(amount)) {
+      setError(true);
       return;
     }
 
-    setErro(false);
+    setError(false);
 
     if (
-      taxaDeCambio[moedaOrigem] &&
-      taxaDeCambio[moedaDestino] &&
-      Number(valor) > 0
+      exchangeRates[fromCurrency] &&
+      exchangeRates[toCurrency] &&
+      Number(amount) > 0
     ) {
-      const taxaDeConversao =
-        taxaDeCambio[moedaDestino] / taxaDeCambio[moedaOrigem];
-      const resultado = Number(valor) * taxaDeConversao;
-      setResultado(resultado);
+      const conversionRate =
+        exchangeRates[toCurrency] / exchangeRates[fromCurrency];
+      const result = Number(amount) * conversionRate;
+      setResult(result);
 
-      atualizaHistorico(moedaOrigem, moedaDestino, valor.toFixed(2), resultado);
+      updateHistory(fromCurrency, toCurrency, amount.toFixed(2), result);
     }
   };
 
-  const atualizaHistorico = (
-    moedaOrigem: string,
-    moedaDestino: string,
-    valor: string,
-    resultado: number,
+  const updateHistory = (
+    fromCurrency: string,
+    toCurrency: string,
+    amount: string,
+    result: number,
   ) => {
-    setHistorico((historicosAnteriores) => {
-      const novoHistorico = [
-        ...historicosAnteriores,
-        { moedaOrigem, moedaDestino, valor, resultado },
+    setHistory((previousHistory) => {
+      const newHistory = [
+        ...previousHistory,
+        { fromCurrency, toCurrency, amount, result },
       ];
-      if (novoHistorico.length > 5) {
-        novoHistorico.shift();
+      if (newHistory.length > 5) {
+        newHistory.shift();
       }
-      return novoHistorico;
+      return newHistory;
     });
   };
 
   return (
     <>
       <Container>
-        <PainelDeConversao
-          valorDeOrigem={moedaOrigem}
-          setValorDeOrigem={setMoedaOrigem}
-          valorDeDestino={moedaDestino}
-          setValorDeDestino={setMoedaDestino}
-          valorInput={valor}
-          setValorInput={setValor}
-          resultado={resultado}
-          moedas={moedas}
-          converter={converter}
-          erro={erro}
+        <ConversionPanel
+          fromValue={fromCurrency}
+          setFromValue={setFromCurrency}
+          toValue={toCurrency}
+          setToValue={setToCurrency}
+          inputValue={amount}
+          setInputValue={setAmount}
+          result={result}
+          currencies={currencies}
+          convert={convert}
+          error={error}
         />
       </Container>
     </>

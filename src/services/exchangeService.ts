@@ -1,15 +1,19 @@
+// External libraries
 import axios from 'axios';
 
-const UAL_API =
-  'https://v6.exchangerate-api.com/v6/8e0373da95fab0502608ea54/latest/';
+const API_URL = import.meta.env.VITE_API_URL;
 
-export const obterTaxasDeCambio = async (moedaBase: string) => {
+export const getExchangeRates = async (baseCurrency: string) => {
   // return true;
+  if (!API_URL) {
+    throw new Error('API URL is not defined in environment variables.');
+  }
+
   try {
-    const response = await axios.get(`${UAL_API}${moedaBase}`);
+    const response = await axios.get(`${API_URL}${baseCurrency}`);
     return response.data;
   } catch (error) {
-    console.error('Erro ao buscar as taxas de câmbio:', error);
+    console.error('Error getting exchange rates:', error);
     throw error;
   }
 };

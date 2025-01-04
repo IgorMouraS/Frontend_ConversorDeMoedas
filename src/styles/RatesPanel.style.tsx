@@ -6,7 +6,7 @@ export const Container = styled.div`
   width: 100wh;
 `;
 
-export const PainelDeMoedas = styled.div`
+export const CurrencyPanel = styled.div`
   animation: scrollAuto 200s linear infinite;
   border: none;
   border-radius: 10px;
@@ -30,7 +30,7 @@ export const PainelDeMoedas = styled.div`
   }
 `;
 
-export const Moeda = styled.div`
+export const Currency = styled.div`
   align-items: center;
   background-color: transparent;
   border: none;
@@ -41,7 +41,7 @@ export const Moeda = styled.div`
   text-align: center;
 `;
 
-export const Titulo = styled.h4`
+export const Title = styled.h4`
   color: #1e1e1e;
   margin: 0;
 
@@ -50,7 +50,7 @@ export const Titulo = styled.h4`
   }
 `;
 
-export const Taxa = styled.p`
+export const Rate = styled.p`
   color: #1e1e1e;
   margin: 5px 0;
 

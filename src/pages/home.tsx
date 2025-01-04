@@ -1,62 +1,62 @@
-// Bibliotecas externas
+// External libraries
 import React, { Suspense } from 'react';
 
-// Arquivos de estilo
+// Style files
 import {
   GlobalStyle,
   HomeContainer,
   Container,
-  TituloEFuncionalidades,
+  TitleAndFeatures,
   Title,
   BodyContainer,
   FooterContainer,
-  PainelDeTaxasContainer,
+  RatesPanelContainer,
 } from '../styles/home.style';
 
-// Contexto
-import { ProvedorMoeda } from '../context/moedaContext';
-import { ProvedorHistorico } from '../context/historicoContext';
-import { useTema } from '../context/TemaContext';
+// Context
+import { CurrencyProvider } from '../context/CurrencyContext';
+import { HistoryProvider } from '../context/HistoryContext';
+import { useTheme } from '../context/ThemeContext';
 
-// Componentes
-import { Conversor } from '../components/Conversor';
-const PainelDeTaxas = React.lazy(() => import('../components/PainelDeTaxas'));
-const BotoesHeader = React.lazy(() => import('../components/BotoesHeader'));
+// Components
+import { Converter } from '../components/Conversor';
+const PainelDeTaxas = React.lazy(() => import('../components/RatesPanel'));
+const BotoesHeader = React.lazy(() => import('../components/HeaderButtons'));
 const ExtraInfo = React.lazy(() => import('../components/extraInfo'));
 
 function Home() {
-  const { isDark } = useTema();
+  const { theme } = useTheme();
   return (
     <>
-      <GlobalStyle isDark={isDark} />
+      <GlobalStyle homeTheme={theme} />
       <HomeContainer>
-        <ProvedorMoeda>
+        <CurrencyProvider>
           <Suspense fallback={<div>Loading...</div>}>
-            <PainelDeTaxasContainer>
+            <RatesPanelContainer>
               <PainelDeTaxas />
-            </PainelDeTaxasContainer>
+            </RatesPanelContainer>
           </Suspense>
           <Container>
-            <ProvedorHistorico>
-              <TituloEFuncionalidades>
+            <HistoryProvider>
+              <TitleAndFeatures>
                 <Suspense fallback={<div>Loading...</div>}>
                   <BotoesHeader />
                 </Suspense>
-                <Title className={isDark ? 'dark' : ''}>
+                <Title className={theme ? 'dark' : ''}>
                   Conversor de Moedas
                 </Title>
-              </TituloEFuncionalidades>
+              </TitleAndFeatures>
               <BodyContainer>
-                <Conversor />
+                <Converter />
               </BodyContainer>
-            </ProvedorHistorico>
+            </HistoryProvider>
           </Container>
           <Suspense fallback={<div>Loading...</div>}>
-            <FooterContainer className={isDark ? 'dark' : ''}>
+            <FooterContainer className={theme ? 'dark' : ''}>
               <ExtraInfo />
             </FooterContainer>
           </Suspense>
-        </ProvedorMoeda>
+        </CurrencyProvider>
       </HomeContainer>
     </>
   );
