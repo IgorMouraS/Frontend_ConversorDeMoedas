@@ -2,6 +2,11 @@
 
 Um conversor de moedas construído com **React** e **Vite**, utilizando a API [exchangerate-api.com](https://www.exchangerate-api.com/) para obter taxas de câmbio atualizadas em tempo real. A aplicação permite ao usuário converter valores entre diferentes moedas com otimização de desempenho, incluindo **Lazy Loading** para melhorar o carregamento 🚀.
 
+## Deploy 🚀
+
+A aplicação está disponível no seguinte link:  
+🔗 [Conversor de Moedas - Netlify](https://conversor-de-moeda-igormsousa2003.netlify.app/)
+
 ## Funcionalidades 📋
 
 1. **Conversão de Moedas**: O usuário pode selecionar uma moeda de origem, uma moeda de destino, inserir um valor para converter e clicar no botão "Converter" para visualizar o cálculo da conversão.
@@ -11,17 +16,15 @@ Um conversor de moedas construído com **React** e **Vite**, utilizando a API [e
 
 ## Imagens do Projeto 📸
 
-![Light-Desktop](./src/assets/ConversorDeMoedas-Light-Desktop.jpg)  
-_Light-Desktop_
+<div style="display: flex; justify-content: center; gap: 20px;">
+  <img src="./src/assets/ConversorDeMoedas-Light-Desktop.jpg" alt="Light-Desktop" height="300px">
+  <img src="./src/assets/ConversorDeMoedas-Light-Mobile.jpeg" alt="Light-Mobile" height="300px">
+</div>
 
-![Light-Desktop](./src/assets/ConversorDeMoedas-Light-Mobile.jpeg)  
-_Light-Mobile_
-
-![Light-Desktop](./src/assets/ConversorDeMoedas-Dark-Desktop.jpg)  
-_Dark-Desktop_
-
-![Light-Desktop](./src/assets/ConversorDeMoedas-Dark-Mobile.jpeg)  
-_Dark-Mobile_
+<div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
+  <img src="./src/assets/ConversorDeMoedas-Dark-Desktop.jpg" alt="Dark-Desktop" height="300px">
+  <img src="./src/assets/ConversorDeMoedas-Dark-Mobile.jpeg" alt="Dark-Mobile" height="300px">
+</div>
 
 ## Informações Técnicas ⚙️
 
@@ -32,11 +35,6 @@ _Dark-Mobile_
   - A aplicação foi otimizada para produção.
   - **Lazy Loading**: Utilizamos lazy loading para módulos não essenciais, melhorando o desempenho de carregamento.
 - **Estilo e Interatividade**: A aplicação foi estilizada utilizando **styled-components**.
-
-## Deploy 🚀
-
-A aplicação está disponível no seguinte link:  
-🔗 [Conversor de Moedas - Netlify](https://conversor-de-moeda-igormsousa2003.netlify.app/)
 
 ## Estrutura do Projeto 📂
 
@@ -55,4 +53,4 @@ A aplicação está disponível no seguinte link:
 
 ---
 
-Projeto desenvolvido por [Igor Moura](https://github.com/seu-usuario).
+Projeto desenvolvido por [Igor Moura](https://github.com/IgorMouraS).
