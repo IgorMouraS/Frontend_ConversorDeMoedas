@@ -20,8 +20,8 @@ import { useTheme } from '../context/ThemeContext';
 
 // Components
 import { Converter } from '../components/Conversor';
-const PainelDeTaxas = React.lazy(() => import('../components/RatesPanel'));
-const BotoesHeader = React.lazy(() => import('../components/HeaderButtons'));
+const RatesPanel = React.lazy(() => import('../components/RatesPanel'));
+const HeaderButtons = React.lazy(() => import('../components/HeaderButtons'));
 const ExtraInfo = React.lazy(() => import('../components/extraInfo'));
 
 function Home() {
@@ -33,14 +33,14 @@ function Home() {
         <CurrencyProvider>
           <Suspense fallback={<div>Loading...</div>}>
             <RatesPanelContainer>
-              <PainelDeTaxas />
+              <RatesPanel />
             </RatesPanelContainer>
           </Suspense>
           <Container>
             <HistoryProvider>
               <TitleAndFeatures>
                 <Suspense fallback={<div>Loading...</div>}>
-                  <BotoesHeader />
+                  <HeaderButtons />
                 </Suspense>
                 <Title className={theme ? 'dark' : ''}>
                   Conversor de Moedas

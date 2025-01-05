@@ -21,6 +21,8 @@ export default [
     rules: {
       'react/react-in-jsx-scope': 'off', // Desativa a exigência do React no escopo
       'prettier/prettier': 'error', // Configura Prettier como uma regra de ESLint
+      'react/display-name': 'off',
+      'react/prop-types': 'off',
     },
   },
 ];

@@ -1,0 +1,5 @@
+encapsular componentes
+
+ajustar a config do tema
+
+ajustar os styles
