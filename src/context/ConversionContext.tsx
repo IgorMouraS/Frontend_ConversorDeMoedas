@@ -1,19 +1,32 @@
-// External libraries
-import React, { useState } from 'react';
+// src/context/ConversionContext.tsx
+import React, { createContext, useContext, useState } from 'react';
 
 // Contexto
 import { useCurrency } from '../context/CurrencyContext';
 import { useHistory } from '../context/HistoryContext';
 
-// Style files
-import { Container } from '../styles/conversor.style';
+interface ConversionContextData {
+  fromCurrency: string;
+  setFromCurrency: (value: string) => void;
+  toCurrency: string;
+  setToCurrency: (value: string) => void;
+  amount: number;
+  setAmount: (value: number) => void;
+  result: number;
+  error: boolean;
+  convert: () => void;
+}
 
-// Components
-import { ConversionPanel } from './ConversionPanel';
+const ConversionContext = createContext<ConversionContextData | undefined>(
+  undefined,
+);
 
-export const Converter: React.FC = () => {
-  const { currencies, exchangeRates } = useCurrency();
+export const ConversionProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const { exchangeRates } = useCurrency();
   const { setHistory } = useHistory();
+
   const [fromCurrency, setFromCurrency] = useState<string>('BRL');
   const [toCurrency, setToCurrency] = useState<string>('USD');
   const [amount, setAmount] = useState<number>(0);
@@ -61,21 +74,28 @@ export const Converter: React.FC = () => {
   };
 
   return (
-    <>
-      <Container>
-        <ConversionPanel
-          fromValue={fromCurrency}
-          setFromValue={setFromCurrency}
-          toValue={toCurrency}
-          setToValue={setToCurrency}
-          inputValue={amount}
-          setInputValue={setAmount}
-          result={result}
-          currencies={currencies}
-          convert={convert}
-          error={error}
-        />
-      </Container>
-    </>
+    <ConversionContext.Provider
+      value={{
+        fromCurrency,
+        setFromCurrency,
+        toCurrency,
+        setToCurrency,
+        amount,
+        setAmount,
+        result,
+        error,
+        convert,
+      }}
+    >
+      {children}
+    </ConversionContext.Provider>
   );
+};
+
+export const useConversion = (): ConversionContextData => {
+  const context = useContext(ConversionContext);
+  if (!context) {
+    throw new Error('useConversion must be used within a ConversionProvider');
+  }
+  return context;
 };

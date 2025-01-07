@@ -27,30 +27,18 @@ export const Button = styled.button`
   }
   &:hover,
   &:hover * {
-    color: #008800;
+    color: ${({ theme }) => theme.color.buttonPrimary};
   }
 
   &:active,
   &:active * {
-    color: #00c500;
+    color: ${({ theme }) => theme.color.buttonSecundary};
     cursor: wait;
-  }
-
-  &.dark {
-    &:hover,
-    &:hover * {
-      color: #00c700;
-    }
-
-    &:active,
-    &:active * {
-      color: #00f200;
-    }
   }
 `;
 
 export const List = styled.div`
-  border: 1px solid #d5d5d5;
+  border: ${({ theme }) => theme.border.historyList};
   border-radius: 25px;
   left: 180%;
   list-style-type: none;
@@ -61,10 +49,6 @@ export const List = styled.div`
   top: -30%;
   z-index: 10;
 
-  &.dark {
-    border: 2px solid #1e1e1e;
-  }
-
   /* Responsividade */
   @media (max-width: ${breakpoints.mobile}) {
     left: -150%;
@@ -74,12 +58,10 @@ export const List = styled.div`
 
 export const Line = styled.p`
   align-items: center;
-  background-color: #ececec;
-  border: 1px solid #d5d5d5;
-  box-shadow:
-    inset 1px 1px 2px rgba(0, 0, 0, 0.1),
-    inset -2px -2px 4px rgba(235, 255, 203, 0.3);
-  color: #1e1e1e;
+  background-color: ${({ theme }) => theme.background_color.historyLine};
+  border: ${({ theme }) => theme.border.historyList};
+  box-shadow: ${({ theme }) => theme.box_shadow.historyLine};
+  color: ${({ theme }) => theme.color.text};
   display: flex;
   font-size: 1rem;
   gap: 14px;
@@ -87,15 +69,6 @@ export const Line = styled.p`
   padding: 0.4rem 0.6rem;
   text-align: center;
   white-space: nowrap;
-
-  &.dark {
-    background-color: #585858;
-    border: 1px solid #1e1e1e;
-    box-shadow:
-      inset -2px -2px 2px rgba(0, 0, 0, 0.1),
-      inset 2px 2px 4px rgba(235, 255, 203, 0.3);
-    color: #d5d5d5;
-  }
 
   /* Responsividade */
   @media (max-width: ${breakpoints.mobile}) {
@@ -105,13 +78,10 @@ export const Line = styled.p`
 `;
 
 export const HistoryIcon = styled.i`
-  color: #1e1e1e;
+  color: ${({ theme }) => theme.color.text};
   font-size: 2rem;
   margin-bottom: 1.5rem;
 
-  &.dark {
-    color: #d5d5d5;
-  }
   /* Responsividade */
   @media (max-width: ${breakpoints.mobile}) {
     font-size: 1.7rem;
@@ -128,14 +98,10 @@ export const HistoryIcon = styled.i`
 
 export const ConversionIcon = styled.i`
   background-color: transparent;
-  color: #1e1e1e;
+  color: ${({ theme }) => theme.color.text};
   font-size: 1rem;
   svg {
     fill: currentColor;
     background: none;
-  }
-
-  &.dark {
-    color: #d5d5d5;
   }
 `;

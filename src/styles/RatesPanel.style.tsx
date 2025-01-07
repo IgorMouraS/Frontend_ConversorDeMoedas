@@ -42,19 +42,11 @@ export const Currency = styled.div`
 `;
 
 export const Title = styled.h4`
-  color: #1e1e1e;
+  color: ${({ theme }) => theme.color.text};
   margin: 0;
-
-  &.dark {
-    color: #d5d5d5;
-  }
 `;
 
 export const Rate = styled.p`
-  color: #1e1e1e;
+  color: ${({ theme }) => theme.color.text};
   margin: 5px 0;
-
-  &.dark {
-    color: #d5d5d5;
-  }
 `;

@@ -40,7 +40,6 @@ const HeaderButtons: React.FC & {
 HeaderButtons.History = () => {
   const { history } = useHistory();
   const [showHistory, setShowHistory] = useState<boolean>(false);
-  const { theme } = useTheme();
 
   const toggleHistory = () => {
     setShowHistory(!showHistory);
@@ -48,8 +47,8 @@ HeaderButtons.History = () => {
 
   return (
     <ContainerHistory>
-      <ButtonHistory onClick={toggleHistory} className={theme ? 'dark' : ''}>
-        <HistoryIcon className={theme ? 'dark' : ''}>
+      <ButtonHistory onClick={toggleHistory}>
+        <HistoryIcon>
           <FontAwesomeIcon
             icon={faClockRotateLeft}
             style={{ background: 'none', padding: 0 }}
@@ -57,11 +56,11 @@ HeaderButtons.History = () => {
         </HistoryIcon>
       </ButtonHistory>
       {showHistory && (
-        <List className={theme ? 'dark' : ''}>
+        <List>
           {history.map((item, index) => (
-            <Line className={theme ? 'dark' : ''} key={index}>
+            <Line key={index}>
               {item.amount} {item.fromCurrency}{' '}
-              <ConversionIcon className={theme ? 'dark' : ''}>
+              <ConversionIcon>
                 <FontAwesomeIcon icon={faMoneyBillTransfer}></FontAwesomeIcon>{' '}
               </ConversionIcon>
               {item.result.toFixed(2)} {item.toCurrency}
@@ -76,9 +75,9 @@ HeaderButtons.History = () => {
 HeaderButtons.Theme = () => {
   const { theme, toggleTheme } = useTheme();
   return (
-    <Button onClick={toggleTheme} className={theme ? 'dark' : ''}>
-      <ThemeIcon className={theme ? 'dark' : ''}>
-        <FontAwesomeIcon icon={theme ? faSun : faMoon} />
+    <Button onClick={toggleTheme}>
+      <ThemeIcon>
+        <FontAwesomeIcon icon={theme === 'dark' ? faSun : faMoon} />
       </ThemeIcon>
     </Button>
   );

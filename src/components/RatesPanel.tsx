@@ -12,19 +12,17 @@ import {
 
 // Context
 import { useCurrency } from '../context/CurrencyContext';
-import { useTheme } from '../context/ThemeContext';
 
 const RatesPanel: React.FC = () => {
   const { currencies, exchangeRates } = useCurrency();
-  const { theme } = useTheme();
 
   return (
     <Container>
       <CurrencyPanel>
         {currencies.map((currency) => (
           <Currency key={currency}>
-            <Title className={theme ? 'dark' : ''}>{currency}</Title>
-            <Rate className={theme ? 'dark' : ''}>
+            <Title>{currency}</Title>
+            <Rate>
               {exchangeRates?.[currency]
                 ? `R$${(1 / exchangeRates[currency]).toFixed(2)}`
                 : 'N/A'}

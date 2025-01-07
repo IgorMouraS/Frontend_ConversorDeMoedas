@@ -39,37 +39,21 @@ export const Button = styled.button`
   }
   &:hover,
   &:hover * {
-    color: #008800;
+    color: ${({ theme }) => theme.color.buttonPrimary};
   }
 
   &:active,
   &:active * {
-    color: #00c500;
+    color: ${({ theme }) => theme.color.buttonSecundary};
     cursor: wait;
-  }
-
-  &.dark {
-    &:hover,
-    &:hover * {
-      color: #00c700;
-    }
-
-    &:active,
-    &:active * {
-      color: #00f200;
-    }
   }
 `;
 
 export const ThemeIcon = styled.i`
-  color: #1e1e1e;
+  color: ${({ theme }) => theme.color.text};
   display: flex;
   font-size: 2.4rem;
   justify-content: flex-end;
-
-  &.dark {
-    color: #d5d5d5;
-  }
 
   /* Responsividade */
   @media (max-width: ${breakpoints.mobile}) {

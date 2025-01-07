@@ -30,29 +30,22 @@ export const Container = styled.div`
 
 export const ConversionField = styled.div<{ $error: boolean }>`
   align-items: center;
-  background-color: ${(props) => (props.$error ? '#ffc2c2' : '#e4e4e4')};
+  background-color: ${({ theme, $error }) =>
+    $error ? '#ffc2c2' : theme.background_color.conversionField};
   border: none;
   border-radius: 25px;
-  box-shadow:
-    4px 4px 10px rgba(0, 0, 0, 0.15),
-    inset -2px 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: ${({ theme }) => theme.box_shadow.conversionField};
   display: flex;
   flex-direction: row;
   justify-content: center;
-
-  &.dark {
-    background-color: ${(props) => (props.$error ? '#ffc2c2' : '#9d9d9d')};
-    box-shadow:
-      4px 4px 10px rgba(0, 0, 0, 0.5),
-      inset -2px 1px 4px rgba(0, 0, 0, 0.8);
-  }
 `;
 
 export const Select = styled.select`
-  background-color: #dddddd;
+  background-color: ${({ theme }) =>
+    theme.background_color.convertionSelectPrimary};
   border: none;
   border-radius: 50px 25px 25px 50px;
-  box-shadow: inset -1px 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: ${({ theme }) => theme.box_shadow.convertionSelectPrimary};
   font-size: 1.2rem;
   padding: 1rem 1rem;
   text-align: center;
@@ -62,27 +55,15 @@ export const Select = styled.select`
   }
 
   &:hover {
-    background-color: #70ff70;
-    box-shadow: inset -1px 1px 2px rgba(0, 58, 0, 0.5);
+    background-color: ${({ theme }) =>
+      theme.background_color.convertionSelectSecundary};
+    box-shadow: ${({ theme }) => theme.box_shadow.convertionSelectSecundary};
     cursor: pointer;
   }
 
   &:active {
-    background-color: #00eb00;
-  }
-
-  &.dark {
-    background-color: #c0c0c0;
-    box-shadow: inset -1px 1px 2px rgba(0, 0, 0, 0.8);
-
-    &:hover {
-      background-color: #50ff50;
-      box-shadow: inset -1px 1px 2px rgba(0, 58, 0, 0.8);
-    }
-
-    &:active {
-      background-color: #00ce00;
-    }
+    background-color: ${({ theme }) =>
+      theme.background_color.convertionSelectTertiary};
   }
 
   /* Responsividade */
@@ -103,13 +84,9 @@ export const Select = styled.select`
 `;
 
 export const Option = styled.option`
-  color: #1e1e1e;
+  color: ${({ theme }) => theme.color.text};
   font-size: 1.2rem;
   text-align: center;
-
-  &.dark {
-    color: #d5d5d5;
-  }
 
   /* Responsividade */
   @media (max-width: ${breakpoints.mobile}) {
@@ -128,7 +105,7 @@ export const Option = styled.option`
 export const Button = styled.button`
   background: none;
   border: none;
-  color: #008800;
+  color: ${({ theme }) => theme.color.buttonPrimary};
   cursor: pointer;
   padding: 0;
   transition: transform 0.3s ease;
@@ -137,32 +114,16 @@ export const Button = styled.button`
     outline: none;
   }
 
-  &:hover {
-    transform: scale(1.2);
-  }
   &:hover,
   &:hover * {
-    color: #00c500;
+    transform: scale(1.1);
+    color: ${({ theme }) => theme.color.buttonSecundary};
   }
 
   &:active,
   &:active * {
-    color: #00c500;
+    color: ${({ theme }) => theme.color.buttonTertiary};
     cursor: wait;
-  }
-
-  &.dark {
-    color: #00c700;
-
-    &:hover,
-    &:hover * {
-      color: #00f200;
-    }
-
-    &:active,
-    &:active * {
-      color: #6aff6a;
-    }
   }
 `;
 
@@ -199,12 +160,24 @@ export const ErrorContainer = styled.div`
 `;
 
 export const ErrorText = styled.p`
-  color: #c20000;
-  font-size: 0.9rem;
-  margin-left: 1.6rem;
+  color: ${({ theme }) => theme.color.errorText};
+  font-size: 0.8rem;
+  margin-left: 3.2rem;
   margin-top: 0.5rem;
 
-  &.dark {
-    color: #ff4343;
+  /* Responsividade */
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 0.8rem;
+    margin-left: 2.5rem;
+  }
+
+  @media (min-width: ${breakpoints.mobile}) and (max-width: ${breakpoints.tablet}) {
+    font-size: 0.7rem;
+    margin-left: 1.2rem;
+  }
+
+  @media (min-width: ${breakpoints.desktop}) {
+    font-size: 0.9rem;
+    margin-left: 3rem;
   }
 `;

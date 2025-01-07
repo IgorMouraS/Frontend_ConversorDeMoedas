@@ -2,9 +2,9 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import breakpoints from './breakpoints.style';
 
-export const GlobalStyle = createGlobalStyle<{ homeTheme: boolean }>`
+export const GlobalStyle = createGlobalStyle`
 *{
-  background-color: ${({ homeTheme }) => (homeTheme ? '#1e1e1e' : '#f5f5f5')};
+  background-color: ${({ theme }) => theme.background_color.globalStyle};
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -63,13 +63,9 @@ export const TitleAndFeatures = styled.section`
 `;
 
 export const Title = styled.h1`
-  color: #1e1e1e;
+  color: ${({ theme }) => theme.color.text};
   font-size: 2.5rem;
   text-align: center;
-
-  &.dark {
-    color: #d5d5d5;
-  }
 
   @media (max-width: ${breakpoints.mobile}) {
     font-size: 1.8rem;
@@ -103,13 +99,9 @@ export const BodyContainer = styled.div`
 `;
 
 export const FooterContainer = styled.footer`
-  background-color: #d6d6d6;
+  background-color: ${({ theme }) => theme.background_color.footerContainer};
+  color: ${({ theme }) => theme.color.text};
   bottom: 0;
   position: fixed;
   width: 100%;
-
-  &.dark {
-    background-color: #121212;
-    color: #d1d1d1;
-  }
 `;

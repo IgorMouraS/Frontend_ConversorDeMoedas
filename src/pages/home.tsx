@@ -14,50 +14,52 @@ import {
 } from '../styles/home.style';
 
 // Context
+import { ConversionProvider } from '../context/ConversionContext';
 import { CurrencyProvider } from '../context/CurrencyContext';
 import { HistoryProvider } from '../context/HistoryContext';
-import { useTheme } from '../context/ThemeContext';
+import { ThemeProvider } from '../context/ThemeContext';
 
 // Components
-import { Converter } from '../components/Conversor';
+import { ConversionPanel } from '../components/ConversionPanel';
 const RatesPanel = React.lazy(() => import('../components/RatesPanel'));
 const HeaderButtons = React.lazy(() => import('../components/HeaderButtons'));
 const ExtraInfo = React.lazy(() => import('../components/extraInfo'));
 
 function Home() {
-  const { theme } = useTheme();
   return (
     <>
-      <GlobalStyle homeTheme={theme} />
-      <HomeContainer>
-        <CurrencyProvider>
-          <Suspense fallback={<div>Loading...</div>}>
-            <RatesPanelContainer>
-              <RatesPanel />
-            </RatesPanelContainer>
-          </Suspense>
-          <Container>
-            <HistoryProvider>
-              <TitleAndFeatures>
-                <Suspense fallback={<div>Loading...</div>}>
-                  <HeaderButtons />
-                </Suspense>
-                <Title className={theme ? 'dark' : ''}>
-                  Conversor de Moedas
-                </Title>
-              </TitleAndFeatures>
-              <BodyContainer>
-                <Converter />
-              </BodyContainer>
-            </HistoryProvider>
-          </Container>
-          <Suspense fallback={<div>Loading...</div>}>
-            <FooterContainer className={theme ? 'dark' : ''}>
-              <ExtraInfo />
-            </FooterContainer>
-          </Suspense>
-        </CurrencyProvider>
-      </HomeContainer>
+      <ThemeProvider>
+        <GlobalStyle />
+        <HomeContainer>
+          <CurrencyProvider>
+            <Suspense fallback={<div>Loading...</div>}>
+              <RatesPanelContainer>
+                <RatesPanel />
+              </RatesPanelContainer>
+            </Suspense>
+            <Container>
+              <HistoryProvider>
+                <TitleAndFeatures>
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <HeaderButtons />
+                  </Suspense>
+                  <Title>Conversor de Moedas</Title>
+                </TitleAndFeatures>
+                <BodyContainer>
+                  <ConversionProvider>
+                    <ConversionPanel />
+                  </ConversionProvider>
+                </BodyContainer>
+              </HistoryProvider>
+            </Container>
+            <Suspense fallback={<div>Loading...</div>}>
+              <FooterContainer>
+                <ExtraInfo />
+              </FooterContainer>
+            </Suspense>
+          </CurrencyProvider>
+        </HomeContainer>
+      </ThemeProvider>
     </>
   );
 }

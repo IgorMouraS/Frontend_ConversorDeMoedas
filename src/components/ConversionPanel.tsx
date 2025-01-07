@@ -17,105 +17,77 @@ import {
 } from '../styles/ConversionPanel.style';
 import { Input } from '../styles/InputValue.style';
 import { Input as InputResult } from '../styles/result.style';
+import { Container as ContainerPanel } from '../styles/conversor.style';
 
 // Context
-import { useTheme } from '../context/ThemeContext';
+import { useCurrency } from '../context/CurrencyContext';
+import { useConversion } from '../context/ConversionContext';
 
-interface ConversionPanelProps {
-  fromValue: string;
-  setFromValue: (value: string) => void;
-  toValue: string;
-  setToValue: (value: string) => void;
-  inputValue: number;
-  setInputValue: (value: number) => void;
-  result: number;
-  currencies: string[];
-  convert: () => void;
-  error: boolean;
-}
+// interfaces
+import {
+  InputProps,
+  ResultProps,
+  CurrencySelectorProps,
+  ConvertButtonProps,
+  FieldProps,
+  ErrorMessageProps,
+} from '../interfaces/ConversionPanelInterfaces';
 
-interface InputProps {
-  value: number;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-interface ResultProps {
-  value: number;
-}
-
-interface CurrencySelectorProps {
-  value: string;
-  setValue: (value: string) => void;
-  currencies: string[];
-}
-
-interface ConvertButtonProps {
-  convert: () => void;
-}
-
-interface FieldProps {
-  error: boolean;
-  children: React.ReactNode;
-  value: string;
-  setValue: (value: string) => void;
-  currencies: string[];
-}
-
-interface ErrorMessageProps {
-  error: boolean;
-}
-
-export const ConversionPanel: React.FC<ConversionPanelProps> & {
+export const ConversionPanel: React.FC & {
   InputValue: React.FC<InputProps>;
   Result: React.FC<ResultProps>;
   CurrencySelector: React.FC<CurrencySelectorProps>;
   ConvertButton: React.FC<ConvertButtonProps>;
   Field: React.FC<FieldProps>;
   ErrorMessage: React.FC<ErrorMessageProps>;
-} = ({
-  fromValue,
-  setFromValue,
-  toValue,
-  setToValue,
-  inputValue,
-  setInputValue,
-  result,
-  currencies,
-  convert,
-  error,
-}) => {
+} = () => {
+  const { currencies } = useCurrency();
+  const {
+    fromCurrency,
+    setFromCurrency,
+    toCurrency,
+    setToCurrency,
+    amount,
+    setAmount,
+    result,
+    error,
+    convert,
+  } = useConversion();
+
   return (
     <>
-      <ErrorContainer>
-        <Container>
-          <ConversionPanel.Field
-            error={error}
-            value={fromValue}
-            setValue={setFromValue}
-            currencies={currencies}
-          >
-            <ConversionPanel.InputValue
-              value={Number(inputValue)}
-              onChange={(e) => setInputValue(Number(e.target.value))}
-            />
-          </ConversionPanel.Field>
-          <ConversionPanel.ConvertButton convert={convert} />
-          <ConversionPanel.Field
-            error={false}
-            value={toValue}
-            setValue={setToValue}
-            currencies={currencies}
-          >
-            <ConversionPanel.Result value={result} />
-          </ConversionPanel.Field>
-        </Container>
-        <ConversionPanel.ErrorMessage error={error} />
-      </ErrorContainer>
+      <ContainerPanel>
+        <ErrorContainer>
+          <Container>
+            <ConversionPanel.Field
+              error={error}
+              value={fromCurrency}
+              setValue={setFromCurrency}
+              currencies={currencies}
+            >
+              <ConversionPanel.InputValue
+                value={Number(amount)}
+                onChange={(e) => setAmount(Number(e.target.value))}
+              />
+            </ConversionPanel.Field>
+            <ConversionPanel.ConvertButton convert={convert} />
+            <ConversionPanel.Field
+              error={false}
+              value={toCurrency}
+              setValue={setToCurrency}
+              currencies={currencies}
+            >
+              <ConversionPanel.Result value={result} />
+            </ConversionPanel.Field>
+          </Container>
+          <ConversionPanel.ErrorMessage error={error} />
+        </ErrorContainer>
+      </ContainerPanel>
     </>
   );
 };
 
-// component filhos
+// Children component
 
 ConversionPanel.InputValue = ({ value, onChange }: InputProps) => {
   return (
@@ -139,15 +111,10 @@ ConversionPanel.CurrencySelector = ({
   setValue,
   currencies,
 }: CurrencySelectorProps) => {
-  const { theme } = useTheme();
   return (
-    <Select
-      className={theme ? 'dark' : ''}
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-    >
+    <Select value={value} onChange={(e) => setValue(e.target.value)}>
       {currencies.map((moeda) => (
-        <Option className={theme ? 'dark' : ''} key={moeda} value={moeda}>
+        <Option key={moeda} value={moeda}>
           {moeda}
         </Option>
       ))}
@@ -156,9 +123,8 @@ ConversionPanel.CurrencySelector = ({
 };
 
 ConversionPanel.ConvertButton = ({ convert }: ConvertButtonProps) => {
-  const { theme } = useTheme();
   return (
-    <Button onClick={convert} className={theme ? 'dark' : ''}>
+    <Button onClick={convert}>
       <Text>convert</Text>
       <Icon>
         <FontAwesomeIcon icon={faMoneyBillTransfer}></FontAwesomeIcon>
@@ -174,9 +140,8 @@ ConversionPanel.Field = ({
   setValue,
   currencies,
 }: FieldProps) => {
-  const { theme } = useTheme();
   return (
-    <ConversionField $error={error} className={theme ? 'dark' : ''}>
+    <ConversionField $error={error}>
       {children}
       <ConversionPanel.CurrencySelector
         value={value}
@@ -188,14 +153,9 @@ ConversionPanel.Field = ({
 };
 
 ConversionPanel.ErrorMessage = ({ error }: ErrorMessageProps) => {
-  const { theme } = useTheme();
   return (
     <>
-      {error && (
-        <ErrorText className={theme ? 'dark' : ''}>
-          Por favor, verifique o valor inserido.
-        </ErrorText>
-      )}
+      {error && <ErrorText>Por favor, verifique o valor inserido.</ErrorText>}
     </>
   );
 };
