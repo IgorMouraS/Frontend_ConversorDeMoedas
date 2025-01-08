@@ -1,20 +1,20 @@
-# 💱 Conversor de Moedas 💱
+# 💱 Currency Converter 💱
 
-Um conversor de moedas construído com **React** e **Vite**, utilizando a API [exchangerate-api.com](https://www.exchangerate-api.com/) para obter taxas de câmbio atualizadas em tempo real. A aplicação permite ao usuário converter valores entre diferentes moedas com otimização de desempenho, incluindo **Lazy Loading** para melhorar o carregamento 🚀.
+A currency converter built with **React** and **Vite**, using the [exchangerate-api.com](https://www.exchangerate-api.com/) API to fetch real-time exchange rates. The application allows users to convert values between different currencies with performance optimizations, including **Lazy Loading** for faster load times 🚀.
 
 ## Deploy 🚀
 
-A aplicação está disponível no seguinte link:  
-🔗 [Conversor de Moedas - Netlify](https://conversor-de-moeda-igormsousa2003.netlify.app/)
+The application is available at the following link:  
+🔗 [Currency Converter - Netlify](https://conversor-de-moeda-igormsousa2003.netlify.app/)
 
-## Funcionalidades 📋
+## Features 📋
 
-1. **Conversão de Moedas**: O usuário pode selecionar uma moeda de origem, uma moeda de destino, inserir um valor para converter e clicar no botão "Converter" para visualizar o cálculo da conversão.
-2. **Atualização em Tempo Real**: As taxas de câmbio são atualizadas diariamente para garantir que os valores sejam precisos.
-3. **Histórico de Conversão**: O usuário pode visualizar as últimas cinco conversões realizadas durante a sessão ao clicar no botão de histórico.
-4. **Modo Noturno**: O usuário pode alterar o tema da página para escuro clicando no ícone de Lua 🌙.
+1. **Currency Conversion**: Users can select a source currency, a target currency, enter a value to convert, and click the "Convert" button to see the conversion calculation.
+2. **Real-time Updates**: Exchange rates are updated daily to ensure accurate values.
+3. **Conversion History**: Users can view the last five conversions performed during the session by clicking the history button.
+4. **Night Mode**: Users can toggle the page theme to dark mode by clicking the Moon icon 🌙.
 
-## Imagens do Projeto 📸
+## Project Images 📸
 
 <div style="display: flex; justify-content: center; gap: 20px;">
   <img src="./img-project/ConversorDeMoedas-Light-Desktop.jpg" alt="Light-Desktop" height="300px">
@@ -26,31 +26,31 @@ A aplicação está disponível no seguinte link:
   <img src="./img-project/ConversorDeMoedas-Dark-Mobile.jpeg" alt="Dark-Mobile" height="300px">
 </div>
 
-## Informações Técnicas ⚙️
+## Technical Details ⚙️
 
-- **React & Vite**: A aplicação foi construída com React, utilizando o Vite para otimizar o processo de build.
-- **API de Taxas de Câmbio**: Utilizamos a API pública da [exchangerate-api.com](https://www.exchangerate-api.com/) para obter taxas de câmbio atualizadas em tempo real.
-- **Armazenamento em Cache**: Implementamos um mecanismo para armazenar as taxas de câmbio localmente usando `localStorage`, atualizando-as diariamente.
-- **Desempenho e Tamanho de Build**:
-  - A aplicação foi otimizada para produção.
-  - **Lazy Loading**: Utilizamos lazy loading para módulos não essenciais, melhorando o desempenho de carregamento.
-- **Estilo e Interatividade**: A aplicação foi estilizada utilizando **styled-components**.
+- **React & Vite**: The application was built with React, using Vite to optimize the build process.
+- **Exchange Rates API**: The application uses the public API from [exchangerate-api.com](https://www.exchangerate-api.com/) to fetch real-time exchange rates.
+- **Cache Storage**: Implemented a mechanism to store exchange rates locally using `localStorage`, updating them daily.
+- **Performance and Build Size**:
+  - The application is optimized for production.
+  - **Lazy Loading**: Lazy loading is used for non-essential modules to improve load performance.
+- **Styling and Interactivity**: The application is styled using **styled-components**.
 
-## Estrutura do Projeto 📂
+## Project Structure 📂
 
-- **src/components**: Contém os componentes principais da aplicação (ex: formulários, botões, histórico).
-- **src/context**: Contém o contexto global para o gerenciamento do estado e atualizações.
-- **src/services**: Contém os serviços para integração com a API de taxas de câmbio.
-- **src/styles**: Contém os arquivos de estilo, utilizando `styled-components`.
+- **src/components**: Contains the application's main components (e.g., forms, buttons, history).
+- **src/context**: Contains the global context for state management and updates.
+- **src/services**: Contains the services for integration with the exchange rates API.
+- **src/styles**: Contains the styling files, utilizing `styled-components`.
 
-## Tecnologias Utilizadas 🛠️
+## Technologies Used 🛠️
 
-- **React**: Biblioteca JavaScript para construção da interface de usuário.
-- **Vite**: Ferramenta de bundling e build extremamente rápida para desenvolvimento.
-- **Axios**: Cliente HTTP para fazer requisições à API de taxas de câmbio.
-- **styled-components**: Para estilização dos componentes da aplicação.
-- **exchangerate-api.com**: API de taxas de câmbio para obter as informações em tempo real.
+- **React**: A JavaScript library for building user interfaces.
+- **Vite**: A fast bundling and build tool for development.
+- **Axios**: HTTP client to make requests to the exchange rates API.
+- **styled-components**: For styling the application's components.
+- **exchangerate-api.com**: Exchange rates API to fetch real-time information.
 
 ---
 
-Projeto desenvolvido por [Igor Moura](https://github.com/IgorMouraS).
+Project developed by [Igor Moura](https://github.com/IgorMouraS).

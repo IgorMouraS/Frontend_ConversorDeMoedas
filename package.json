@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "jest"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.1",
@@ -23,7 +24,11 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.16.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
     "@types/axios": "^0.14.4",
+    "@types/jest": "^29.5.14",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@typescript-eslint/eslint-plugin": "^8.17.0",
@@ -37,6 +42,7 @@
     "eslint-plugin-react-refresh": "^0.4.14",
     "eslint-plugin-styled-components-a11y": "^2.1.36",
     "globals": "^15.13.0",
+    "jest": "^29.7.0",
     "prettier": "^3.4.1",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.17.0",
