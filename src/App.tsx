@@ -2,10 +2,10 @@
 import './App.css';
 
 // Context
-import { ThemeProvider } from './context/ThemeContext';
+import { ThemeProvider } from './context/Theme/Theme.context';
 
 // Components
-import Home from './pages/home';
+import Home from './pages/home/home.page';
 
 function App() {
   return (

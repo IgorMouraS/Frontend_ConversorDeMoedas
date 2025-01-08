@@ -17,13 +17,13 @@ A aplicação está disponível no seguinte link:
 ## Imagens do Projeto 📸
 
 <div style="display: flex; justify-content: center; gap: 20px;">
-  <img src="./src/assets/ConversorDeMoedas-Light-Desktop.jpg" alt="Light-Desktop" height="300px">
-  <img src="./src/assets/ConversorDeMoedas-Light-Mobile.jpeg" alt="Light-Mobile" height="300px">
+  <img src="./img-project/ConversorDeMoedas-Light-Desktop.jpg" alt="Light-Desktop" height="300px">
+  <img src="./img-project/ConversorDeMoedas-Light-Mobile.jpeg" alt="Light-Mobile" height="300px">
 </div>
 
 <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
-  <img src="./src/assets/ConversorDeMoedas-Dark-Desktop.jpg" alt="Dark-Desktop" height="300px">
-  <img src="./src/assets/ConversorDeMoedas-Dark-Mobile.jpeg" alt="Dark-Mobile" height="300px">
+  <img src="./img-project/ConversorDeMoedas-Dark-Desktop.jpg" alt="Dark-Desktop" height="300px">
+  <img src="./img-project/ConversorDeMoedas-Dark-Mobile.jpeg" alt="Dark-Mobile" height="300px">
 </div>
 
 ## Informações Técnicas ⚙️

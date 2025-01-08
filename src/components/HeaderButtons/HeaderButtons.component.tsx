@@ -9,19 +9,23 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 // Style files
-import { Button, Container, ThemeIcon } from '../styles/HeaderButtons.style';
 import {
-  Container as ContainerHistory,
-  List,
-  Line,
-  HistoryIcon,
-  ConversionIcon,
-  Button as ButtonHistory,
-} from '../styles/History.style';
+  Button_S,
+  Container_S,
+  ThemeIcon_S,
+  ContainerHistory_S,
+  List_S,
+  Line_S,
+  HistoryIcon_S,
+  ConversionIcon_S,
+  ButtonHistory_S,
+} from './HeaderButtons.style';
 
 // Context
-import { useHistory } from '../context/HistoryContext';
-import { useTheme } from '../context/ThemeContext';
+import { useHistory } from '../../context/History/History.context';
+
+// hooks
+import { useThemeContext } from '../../context/Theme/Theme.context';
 
 const HeaderButtons: React.FC & {
   History: React.FC;
@@ -29,10 +33,10 @@ const HeaderButtons: React.FC & {
 } = () => {
   return (
     <>
-      <Container>
+      <Container_S>
         <HeaderButtons.History />
         <HeaderButtons.Theme />
-      </Container>
+      </Container_S>
     </>
   );
 };
@@ -46,40 +50,40 @@ HeaderButtons.History = () => {
   };
 
   return (
-    <ContainerHistory>
-      <ButtonHistory onClick={toggleHistory}>
-        <HistoryIcon>
+    <ContainerHistory_S>
+      <ButtonHistory_S onClick={toggleHistory}>
+        <HistoryIcon_S>
           <FontAwesomeIcon
             icon={faClockRotateLeft}
             style={{ background: 'none', padding: 0 }}
           />
-        </HistoryIcon>
-      </ButtonHistory>
+        </HistoryIcon_S>
+      </ButtonHistory_S>
       {showHistory && (
-        <List>
+        <List_S>
           {history.map((item, index) => (
-            <Line key={index}>
+            <Line_S key={index}>
               {item.amount} {item.fromCurrency}{' '}
-              <ConversionIcon>
+              <ConversionIcon_S>
                 <FontAwesomeIcon icon={faMoneyBillTransfer}></FontAwesomeIcon>{' '}
-              </ConversionIcon>
+              </ConversionIcon_S>
               {item.result.toFixed(2)} {item.toCurrency}
-            </Line>
+            </Line_S>
           ))}
-        </List>
+        </List_S>
       )}
-    </ContainerHistory>
+    </ContainerHistory_S>
   );
 };
 
 HeaderButtons.Theme = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useThemeContext();
   return (
-    <Button onClick={toggleTheme}>
-      <ThemeIcon>
+    <Button_S onClick={toggleTheme}>
+      <ThemeIcon_S>
         <FontAwesomeIcon icon={theme === 'dark' ? faSun : faMoon} />
-      </ThemeIcon>
-    </Button>
+      </ThemeIcon_S>
+    </Button_S>
   );
 };
 

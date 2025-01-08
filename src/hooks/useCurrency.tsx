@@ -1,27 +1,13 @@
+//  Hook for managing the currency exchange rates
+
 // External libraries
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 
 // Service
-import { getExchangeRates } from '../services/exchangeService';
+import { getExchangeRates } from '../services/exchange.service';
 
-interface CurrencyContextData {
-  currencies: string[];
-  exchangeRates: { [key: string]: number };
-  updateRates: () => void;
-  lastUpdate: string | null;
-  lastCheck: string | null;
-}
-
-const CurrencyContext = createContext<CurrencyContextData | null>(null);
-
-interface CurrencyProviderProps {
-  children: React.ReactNode;
-}
-
-export const CurrencyProvider: React.FC<CurrencyProviderProps> = ({
-  children,
-}) => {
+export const useCurrency = () => {
   const [currencies, setCurrencies] = useState<string[]>([]);
   const [exchangeRates, setExchangeRates] = useState<{ [key: string]: number }>(
     {},
@@ -97,26 +83,11 @@ export const CurrencyProvider: React.FC<CurrencyProviderProps> = ({
     return () => clearInterval(interval);
   }, []);
 
-  return (
-    <CurrencyContext.Provider
-      value={{
-        currencies,
-        exchangeRates,
-        updateRates,
-        lastUpdate,
-        lastCheck,
-      }}
-    >
-      {children}
-    </CurrencyContext.Provider>
-  );
-};
-
-// Hook to access the context
-export const useCurrency = (): CurrencyContextData => {
-  const context = useContext(CurrencyContext);
-  if (!context) {
-    throw new Error('useCurrency must be used within a CurrencyProvider');
-  }
-  return context;
+  return {
+    currencies,
+    exchangeRates,
+    updateRates,
+    lastUpdate,
+    lastCheck,
+  };
 };

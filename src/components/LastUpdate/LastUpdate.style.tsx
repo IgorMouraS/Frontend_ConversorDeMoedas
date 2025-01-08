@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import breakpoints from './breakpoints.style';
+import breakpoints from '../../styles/breakpoints.style';
 
-export const Container = styled.div`
+export const Container_S = styled.div`
   align-items: center;
   background-color: transparent;
   display: flex;
@@ -11,7 +11,7 @@ export const Container = styled.div`
   padding: 1rem;
 `;
 
-export const Text = styled.p`
+export const Text_S = styled.p`
   background-color: transparent;
   font-family: Arial, sans-serif;
   font-size: 0.7rem;

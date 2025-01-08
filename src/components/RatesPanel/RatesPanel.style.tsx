@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container_S = styled.div`
   overflow: hidden;
   padding: 1rem 0;
   width: 100wh;
 `;
 
-export const CurrencyPanel = styled.div`
+export const CurrencyPanel_S = styled.div`
   animation: scrollAuto 200s linear infinite;
   border: none;
   border-radius: 10px;
@@ -30,7 +30,7 @@ export const CurrencyPanel = styled.div`
   }
 `;
 
-export const Currency = styled.div`
+export const Currency_S = styled.div`
   align-items: center;
   background-color: transparent;
   border: none;
@@ -41,12 +41,12 @@ export const Currency = styled.div`
   text-align: center;
 `;
 
-export const Title = styled.h4`
+export const Title_S = styled.h4`
   color: ${({ theme }) => theme.color.text};
   margin: 0;
 `;
 
-export const Rate = styled.p`
+export const Rate_S = styled.p`
   color: ${({ theme }) => theme.color.text};
   margin: 5px 0;
 `;

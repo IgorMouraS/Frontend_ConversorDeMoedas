@@ -1,23 +1,23 @@
-export interface InputProps {
+export interface Input_I {
   value: number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export interface ResultProps {
+export interface Result_I {
   value: number;
 }
 
-export interface CurrencySelectorProps {
+export interface CurrencySelector_I {
   value: string;
   setValue: (value: string) => void;
   currencies: string[];
 }
 
-export interface ConvertButtonProps {
+export interface ConvertButton_I {
   convert: () => void;
 }
 
-export interface FieldProps {
+export interface Field_I {
   error: boolean;
   children: React.ReactNode;
   value: string;
@@ -25,6 +25,6 @@ export interface FieldProps {
   currencies: string[];
 }
 
-export interface ErrorMessageProps {
+export interface ErrorMessage_I {
   error: boolean;
 }

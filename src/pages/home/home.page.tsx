@@ -11,19 +11,25 @@ import {
   BodyContainer,
   FooterContainer,
   RatesPanelContainer,
-} from '../styles/home.style';
+} from './home.style';
 
 // Context
-import { ConversionProvider } from '../context/ConversionContext';
-import { CurrencyProvider } from '../context/CurrencyContext';
-import { HistoryProvider } from '../context/HistoryContext';
-import { ThemeProvider } from '../context/ThemeContext';
+import { ConversionProvider } from '../../context/Conversion/Conversion.context';
+import { CurrencyProvider } from '../../context/Currency/Currency.context';
+import { HistoryProvider } from '../../context/History/History.context';
+import { ThemeProvider } from '../../context/Theme/Theme.context';
 
 // Components
-import { ConversionPanel } from '../components/ConversionPanel';
-const RatesPanel = React.lazy(() => import('../components/RatesPanel'));
-const HeaderButtons = React.lazy(() => import('../components/HeaderButtons'));
-const ExtraInfo = React.lazy(() => import('../components/extraInfo'));
+import { ConversionPanel } from '../../components/ConversionPanel/ConversionPanel.component';
+const RatesPanel = React.lazy(
+  () => import('../../components/RatesPanel/RatesPanel.component'),
+);
+const HeaderButtons = React.lazy(
+  () => import('../../components/HeaderButtons/HeaderButtons.component'),
+);
+const LastUpdate = React.lazy(
+  () => import('../../components/LastUpdate/LastUpdate.component'),
+);
 
 function Home() {
   return (
@@ -54,7 +60,7 @@ function Home() {
             </Container>
             <Suspense fallback={<div>Loading...</div>}>
               <FooterContainer>
-                <ExtraInfo />
+                <LastUpdate />
               </FooterContainer>
             </Suspense>
           </CurrencyProvider>

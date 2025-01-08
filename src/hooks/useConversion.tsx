@@ -1,29 +1,13 @@
-// src/context/ConversionContext.tsx
-import React, { createContext, useContext, useState } from 'react';
+// Hook for managing the currency conversion
+
+// External libraries
+import { useState } from 'react';
 
 // Contexto
-import { useCurrency } from '../context/CurrencyContext';
-import { useHistory } from '../context/HistoryContext';
+import { useCurrency } from './useCurrency';
+import { useHistory } from '../context/History/History.context';
 
-interface ConversionContextData {
-  fromCurrency: string;
-  setFromCurrency: (value: string) => void;
-  toCurrency: string;
-  setToCurrency: (value: string) => void;
-  amount: number;
-  setAmount: (value: number) => void;
-  result: number;
-  error: boolean;
-  convert: () => void;
-}
-
-const ConversionContext = createContext<ConversionContextData | undefined>(
-  undefined,
-);
-
-export const ConversionProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+export const useConversion = () => {
   const { exchangeRates } = useCurrency();
   const { setHistory } = useHistory();
 
@@ -73,29 +57,15 @@ export const ConversionProvider: React.FC<{ children: React.ReactNode }> = ({
     });
   };
 
-  return (
-    <ConversionContext.Provider
-      value={{
-        fromCurrency,
-        setFromCurrency,
-        toCurrency,
-        setToCurrency,
-        amount,
-        setAmount,
-        result,
-        error,
-        convert,
-      }}
-    >
-      {children}
-    </ConversionContext.Provider>
-  );
-};
-
-export const useConversion = (): ConversionContextData => {
-  const context = useContext(ConversionContext);
-  if (!context) {
-    throw new Error('useConversion must be used within a ConversionProvider');
-  }
-  return context;
+  return {
+    fromCurrency,
+    setFromCurrency,
+    toCurrency,
+    setToCurrency,
+    amount,
+    setAmount,
+    result,
+    error,
+    convert,
+  };
 };
